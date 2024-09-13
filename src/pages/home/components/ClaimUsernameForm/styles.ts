@@ -1,4 +1,4 @@
-import { Box, styled } from '@degui-ui/react'
+import { Box, Text, styled } from '@degui-ui/react'
 
 export const Form = styled(Box, {
   display: 'grid',
