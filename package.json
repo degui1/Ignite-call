@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "@degui-ui/react": "^4.0.0",
+    "@hookform/resolvers": "^3.9.0",
     "next": "14.2.8",
+    "phosphor-react": "^1.4.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.2.2",
