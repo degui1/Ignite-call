@@ -47,5 +47,5 @@ export default async function handler(
     }),
   )
 
-  return res.status(201).json({ intervals, session })
+  return res.status(201).end()
 }
