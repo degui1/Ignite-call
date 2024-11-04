@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { ScheduleForm } from './ScheduleForm'
 import { NextSeo } from 'next-seo'
+import { useSession } from 'next-auth/react'
 
 interface ScheduleProps {
   user: {
@@ -14,13 +15,18 @@ interface ScheduleProps {
 }
 
 export default function Schedule({ user }: ScheduleProps) {
+  const session = useSession()
+
   return (
     <>
       <NextSeo title={`Agendar com ${user.name} | Ignite Call`} />
 
       <Container>
         <UserHeader>
-          <Avatar src="https://github.com/degui1.png" />
+          <Avatar
+            src={session.data?.user.avatar_url}
+            alt={session.data?.user.name}
+          />
           <Heading>{user.name}</Heading>
           <Text>Software Developer</Text>
         </UserHeader>
