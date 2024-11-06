@@ -18,12 +18,12 @@ type ConfirmFormData = z.infer<typeof confirmFormSchema>
 
 interface ConfirmStepProps {
   schedulingDate: Date
-  onCancelConfirmation: () => void
+  onFinishConfirmation: () => void
 }
 
 export function ConfirmStep({
   schedulingDate,
-  onCancelConfirmation,
+  onFinishConfirmation,
 }: ConfirmStepProps) {
   const {
     register,
@@ -39,14 +39,16 @@ export function ConfirmStep({
   async function handleConfirmScheduling(data: ConfirmFormData) {
     const { email, name, observations } = data
 
-    await api.post(`/users/${username}/schedule`, {
-      name,
-      email,
-      observations,
-      date: schedulingDate,
-    })
-
-    onCancelConfirmation()
+    try {
+      await api.post(`/users/${username}/schedule`, {
+        name,
+        email,
+        observations,
+        date: schedulingDate,
+      })
+    } finally {
+      onFinishConfirmation()
+    }
   }
 
   const describedDate = dayjs(schedulingDate).format('DD[ de ]MMMM[ de ]YYYY')
@@ -89,7 +91,7 @@ export function ConfirmStep({
       </label>
 
       <FormActions>
-        <Button type="button" variant="tertiary" onClick={onCancelConfirmation}>
+        <Button type="button" variant="tertiary" onClick={onFinishConfirmation}>
           Cancelar
         </Button>
         <Button type="submit" disabled={isSubmitting}>
