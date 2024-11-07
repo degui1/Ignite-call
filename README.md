@@ -19,10 +19,23 @@ Automatically, when making a schedule, information with date, time, name, email 
 
   # Prod mode
   npm run build
-  npm run preview
+  npm run preview 
 ```
 
 ## ⚙ Config Section
+```bash
+# Prisma - both URLs are used to connect to the database
+DATABASE_URL="url"
+DATABASE_DIRECT_URL="url"
+
+# Google oAuth - These keys are provided by Google so that the website can use OAuth2.0
+GOOGLE_CLIENT_ID=id
+GOOGLE_CLIENT_SECRET=secret
+
+# NextAuth - NextAuthSecret is required to use NextAuth. You can create a random string.
+NEXTAUTH_SECRET=secret
+
+```
 
 ### 🛠 Tools:
  - React 
